@@ -1,0 +1,21 @@
+{
+    "productos": {
+        "producto2": {
+            "precio": 200.0,
+            "cantidad": 15
+        },
+        "producto3": {
+            "precio": 300.0,
+            "cantidad": 20
+        }
+    },
+    "ventas": [
+        {
+            "producto": "producto2",
+            "cantidad": -5,
+            "total": -900.0,
+            "vendedor": "ventas",
+            "fecha": "2026-10-08"
+        }
+    ]
+}
