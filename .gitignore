@@ -1,0 +1,13 @@
+# Ignorar tokens y pruebas de credenciales
+.env
+.env.local
+.env.supabase
+*.env*
+prueba_sistema/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Sub-repositorio independiente de la Licorera (ya tiene su propio repo en GitHub)
+Licorera_Donde_Jefer/

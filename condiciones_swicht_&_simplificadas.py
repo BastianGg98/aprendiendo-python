@@ -21,4 +21,3 @@ match Op:
         num2 = int(input("Ingresa el segundo numero: "))
         resultado = "No se puede dividir entre cero" if num2 == 0 else num1 / num2
         print("El resultado es: ", resultado)
-        
