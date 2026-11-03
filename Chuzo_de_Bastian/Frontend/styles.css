@@ -1,0 +1,325 @@
+/* ==========================================================
+   ESTILOS CALLEJEROS Y LLAMATIVOS - EL CHUZO DE BASTIAN
+   ========================================================== */
+
+:root {
+    --color-fondo: #0f1016;
+    --color-tarjeta: #1a1c26;
+    --color-rojo-neon: #ff2a4b;
+    --color-amarillo-mostaza: #ffb703;
+    --color-texto-blanco: #ffffff;
+    --color-texto-gris: #a0a5b5;
+    --color-borde: #2c2f3f;
+    --color-exito: #00f076;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto-blanco);
+    padding-bottom: 50px;
+    min-height: 100vh;
+}
+
+/* ENCABEZADO */
+.header {
+    background: linear-gradient(135deg, #1b0a0e 0%, #2b1117 50%, #151620 100%);
+    border-bottom: 3px solid var(--color-rojo-neon);
+    padding: 40px 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(255, 42, 75, 0.2);
+}
+
+.emoji-logo {
+    font-size: 2.2rem;
+    display: block;
+    margin-bottom: 10px;
+    animation: flotar 2.5s ease-in-out infinite;
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.header h1 {
+    font-family: 'Bungee', cursive;
+    font-size: 2.8rem;
+    letter-spacing: 2px;
+    color: var(--color-amarillo-mostaza);
+    text-shadow: 3px 3px 0px #000, 0 0 20px rgba(255, 183, 3, 0.5);
+    margin-bottom: 8px;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    color: var(--color-texto-gris);
+    font-weight: 400;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.contenedor-principal {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* SECCIÓN MENÚ */
+.titulo-seccion {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--color-amarillo-mostaza);
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* TARJETAS DE COMIDA */
+.tarjeta-producto {
+    background-color: var(--color-tarjeta);
+    border: 2px solid var(--color-borde);
+    border-radius: 18px;
+    padding: 30px 22px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.tarjeta-producto:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-amarillo-mostaza);
+    box-shadow: 0 15px 30px rgba(255, 183, 3, 0.25);
+}
+
+.tarjeta-producto.destacada {
+    border-color: var(--color-rojo-neon);
+    background: linear-gradient(180deg, #241922 0%, var(--color-tarjeta) 100%);
+}
+
+.badge-favorito {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background-color: var(--color-rojo-neon);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(255, 42, 75, 0.5);
+}
+
+.icono-comida {
+    font-size: 4rem;
+    margin-bottom: 12px;
+}
+
+.tarjeta-producto h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.tarjeta-producto .descripcion {
+    font-size: 0.9rem;
+    color: var(--color-texto-gris);
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.tarjeta-producto .precio {
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: var(--color-amarillo-mostaza);
+    margin-bottom: 18px;
+}
+
+.btn-agregar {
+    background-color: transparent;
+    color: var(--color-amarillo-mostaza);
+    border: 2px solid var(--color-amarillo-mostaza);
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-agregar:hover {
+    background-color: var(--color-amarillo-mostaza);
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 183, 3, 0.5);
+}
+
+/* SECCIÓN FORMULARIO */
+.seccion-pedido {
+    max-width: 600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.caja-formulario {
+    background-color: var(--color-tarjeta);
+    border: 2px solid var(--color-borde);
+    border-radius: 20px;
+    padding: 35px 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.caja-formulario h2 {
+    font-size: 1.5rem;
+    color: var(--color-rojo-neon);
+    text-align: center;
+    margin-bottom: 8px;
+    font-weight: 800;
+}
+
+.subtitulo-form {
+    text-align: center;
+    color: var(--color-texto-gris);
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+}
+
+.campo {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fila-doble {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-texto-gris);
+}
+
+input {
+    background-color: #12131b;
+    border: 2px solid var(--color-borde);
+    color: white;
+    padding: 12px 15px;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    border-color: var(--color-amarillo-mostaza);
+}
+
+input[readonly] {
+    background-color: #181924;
+    color: #ffd166;
+    cursor: not-allowed;
+}
+
+/* CAJA DEL TOTAL */
+.caja-total {
+    background-color: #12131b;
+    border: 2px dashed var(--color-amarillo-mostaza);
+    padding: 15px 20px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.caja-total span {
+    color: var(--color-texto-gris);
+    font-weight: 600;
+}
+
+.caja-total strong {
+    font-size: 1.6rem;
+    color: var(--color-amarillo-mostaza);
+}
+
+/* BOTÓN DISPARAR */
+.btn-marchar {
+    width: 100%;
+    background: linear-gradient(90deg, #ff2a4b, #ff5e36);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 1.15rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(255, 42, 75, 0.4);
+    transition: all 0.2s ease;
+}
+
+.btn-marchar:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(255, 42, 75, 0.6);
+}
+
+.btn-marchar:active {
+    transform: scale(0.98);
+}
+
+/* MENSAJE DE ESTADO (TOAST O AVISO) */
+.mensaje-oculto {
+    display: none;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 600;
+    animation: fadeIn 0.3s ease;
+}
+
+.mensaje-exito {
+    display: block;
+    background-color: rgba(0, 240, 118, 0.15);
+    border: 2px solid var(--color-exito);
+    color: var(--color-exito);
+}
+
+.mensaje-error {
+    display: block;
+    background-color: rgba(255, 42, 75, 0.15);
+    border: 2px solid var(--color-rojo-neon);
+    color: var(--color-rojo-neon);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .header h1 { font-size: 2rem; }
+    .fila-doble { grid-template-columns: 1fr; }
+}

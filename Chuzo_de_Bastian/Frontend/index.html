@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍔 El Chuzo de Bastian - Sabor Callejero</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Fuente moderna de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Bungee&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Encabezado con energía de comidas rápidas -->
+    <header class="header">
+        <div class="logo-box">
+            <span class="emoji-logo">🔥🍔🔥</span>
+            <h1>EL CHUZO DE BASTIAN</h1>
+            <p class="tagline">Las mejores hamburguesas y salchipapas de la cuadra</p>
+        </div>
+    </header>
+
+    <div class="contenedor-principal">
+        
+        <!-- SECCIÓN 1: Menú de Comidas -->
+        <section class="seccion-menu">
+            <h2 class="titulo-seccion">🌮 NUESTRO MENÚ CALLEJERO</h2>
+            <div class="grid-productos">
+                
+                <!-- Producto 1: Hamburguesa -->
+                <div class="tarjeta-producto">
+                    <div class="icono-comida">🍔</div>
+                    <h3>Hamburguesa Brutal</h3>
+                    <p class="descripcion">Doble carne artesanal, tocineta ahumada, queso costeño frito y salsa tártara de la casa.</p>
+                    <div class="precio">$ 26.000</div>
+                    <button class="btn-agregar" onclick="seleccionarProducto('Hamburguesa Brutal', 26000)">
+                        Pedir Esta 🍔
+                    </button>
+                </div>
+
+                <!-- Producto 2: Salchipapa -->
+                <div class="tarjeta-producto destacada">
+                    <span class="badge-favorito">⭐ La Más Vendida</span>
+                    <div class="icono-comida">🍟</div>
+                    <h3>Salchipapa Salvaje</h3>
+                    <p class="descripcion">Papas a la francesa, salchicha americana, ripio de papa, queso derretido y huevo de codorniz.</p>
+                    <div class="precio">$ 24.000</div>
+                    <button class="btn-agregar" onclick="seleccionarProducto('Salchipapa Salvaje', 24000)">
+                        Pedir Esta 🍟
+                    </button>
+                </div>
+
+                <!-- Producto 3: Perro Caliente -->
+                <div class="tarjeta-producto">
+                    <div class="icono-comida">🌭</div>
+                    <h3>Perro Especial Paisa</h3>
+                    <p class="descripcion">Salchicha manguera, tocineta, tocineta crocante, queso gratinado, piña casera y papitas fosforito.</p>
+                    <div class="precio">$ 18.000</div>
+                    <button class="btn-agregar" onclick="seleccionarProducto('Perro Especial Paisa', 18000)">
+                        Pedir Este 🌭
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN 2: Formulario para Despachar la Orden -->
+        <section class="seccion-pedido">
+            <div class="caja-formulario">
+                <h2>📝 MARCHAR PEDIDO A LA COCINA</h2>
+                <p class="subtitulo-form">Selecciona tu comida arriba o escribe lo que vas a pedir:</p>
+
+                <form id="form-pedido">
+                    <div class="campo">
+                        <label for="cliente">👤 Tu Nombre (Cliente):</label>
+                        <input type="text" id="cliente" placeholder="Ej: Bastian el Parcero" required>
+                    </div>
+
+                    <div class="campo">
+                        <label for="producto">🍔 Producto Elegido:</label>
+                        <input type="text" id="producto" placeholder="Toca una tarjeta arriba..." readonly required>
+                    </div>
+
+                    <div class="fila-doble">
+                        <div class="campo">
+                            <label for="precio">💵 Precio ($ COP):</label>
+                            <input type="number" id="precio" placeholder="0" readonly required>
+                        </div>
+                        <div class="campo">
+                            <label for="cantidad">🔢 Cantidad:</label>
+                            <input type="number" id="cantidad" value="1" min="1" max="20" required>
+                        </div>
+                    </div>
+
+                    <!-- Resumen del Total -->
+                    <div class="caja-total">
+                        <span>Total a Pagar:</span>
+                        <strong id="total-cuenta">$ 0</strong>
+                    </div>
+
+                    <button type="submit" class="btn-marchar">
+                        🚀 ¡MARCHAR PEDIDO AHORA!
+                    </button>
+                </form>
+
+                <!-- Aviso de respuesta del servidor (Éxito o Error) -->
+                <div id="mensaje-estado" class="mensaje-oculto"></div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Conexión con el JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
