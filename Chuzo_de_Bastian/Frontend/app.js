@@ -48,6 +48,9 @@ async function cargarPedidosCocina() {
                     <span>Cant: ${pedido.cantidad} x $${pedido.precio.toLocaleString()}</span>
                     <span class="comanda-total">$${pedido.total.toLocaleString()}</span>
                 </div>
+                    <button class="btn-despachar" onclick="despacharPedido(${index})">
+                    ✅ ¡Despachar Pedido!
+                    </button>
             `;
             contenedor.appendChild(tarjeta);
         });
@@ -56,6 +59,23 @@ async function cargarPedidosCocina() {
     }
 }
 
+async function despacharPedido(index) {
+    try {
+        const respuesta = await fetch(`${API_URL}/pedido/${index}`, {
+            method: "DELETE"
+        });
+        const data = await respuesta.json();
+        if (respuesta.ok) {
+            alert(`✅ ${data.mensaje}: ${data.pedidoEntregado.producto}`);
+            cargarPedidosCocina(); // 👈 Esto borra la tarjeta de la pantalla en vivo
+        } else {
+            alert(`❌ Error: ${data.detail}`);
+        }
+    } catch (error) {
+        console.error("Error al despachar pedido:", error);
+        alert("❌ No se pudo conectar con el servidor.");
+    }
+}
 
 document.getElementById("form-pedido").addEventListener("submit", async (e) => {
     e.preventDefault();

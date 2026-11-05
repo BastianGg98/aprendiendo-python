@@ -393,6 +393,31 @@ input[readonly] {
     color: var(--color-exito);
 }
 
+.btn-despachar {
+    width: 100%;
+    margin-top: 15px;
+    background: linear-gradient(90deg, #00c853, #00e676);
+    color: #0b0c10;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 230, 118, 0.3);
+    transition: all 0.2s ease;
+}
+
+.btn-despachar:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 18px rgba(0, 230, 118, 0.5);
+    background: linear-gradient(90deg, #00e676, #69f0ae);
+}
+
+.btn-despachar:active {
+    transform: scale(0.98);
+}
+
 .sin-comandas {
     grid-column: 1 / -1;
     text-align: center;
