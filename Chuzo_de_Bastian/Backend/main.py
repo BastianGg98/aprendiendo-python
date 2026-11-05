@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import json
@@ -63,3 +63,22 @@ def listar_pedidos():
         listado_pedidos = []
 
     return {"pedidos": listado_pedidos}
+
+@app.delete("/pedido/{index}")
+def despachar_pedido(index: int):
+    if not os.path.exists(ARCHIVO_PEDIDOS):
+        raise HTTPException(status_code=404, detail="No hay pedidos pendientes para despachar.")
+
+    with open(ARCHIVO_PEDIDOS, "r", encoding="utf-8") as f:
+        listado_pedidos = json.load(f)
+
+    if index < 0 or index >= len(listado_pedidos):
+        raise HTTPException(status_code=404, detail="Pedido no encontrado.")
+        
+    pedidoEntregado = listado_pedidos.pop(index)
+    
+    with open(ARCHIVO_PEDIDOS, "w", encoding="utf-8") as f:
+            json.dump(listado_pedidos, f, indent=4)
+
+    return {"mensaje": "Pedido despachado con éxito", "pedidoEntregado": pedidoEntregado}
+
