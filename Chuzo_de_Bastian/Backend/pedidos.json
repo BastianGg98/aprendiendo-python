@@ -4,5 +4,29 @@
         "producto": "Hamburguesa Doble Carne con Tocineta",
         "precio": 28000.0,
         "cantidad": 1
+    },
+    {
+        "cliente": "Juan1",
+        "producto": "Hamburguesa Brutal",
+        "precio": 26000.0,
+        "cantidad": 1
+    },
+    {
+        "cliente": "Juan2",
+        "producto": "Salchipapa Salvaje",
+        "precio": 24000.0,
+        "cantidad": 3
+    },
+    {
+        "cliente": "Juan1",
+        "producto": "Salchipapa Salvaje",
+        "precio": 24000.0,
+        "cantidad": 2
+    },
+    {
+        "cliente": "Juan3",
+        "producto": "Perro Especial Paisa",
+        "precio": 18000.0,
+        "cantidad": 3
     }
 ]
