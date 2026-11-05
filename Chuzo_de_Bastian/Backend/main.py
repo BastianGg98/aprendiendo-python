@@ -7,6 +7,10 @@ import os
 # 1. Creamos la aplicación del servidor
 app = FastAPI(title="API El Chuzo de Bastian")
 
+# Ruta segura al archivo pedidos.json (funciona desde cualquier carpeta donde se prenda el servidor)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ARCHIVO_PEDIDOS = os.path.join(BASE_DIR, "pedidos.json")
+
 # 2. Permitimos que el HTML y JS se puedan conectar sin bloqueos (CORS)
 app.add_middleware(
     CORSMiddleware,
@@ -25,8 +29,8 @@ class Pedido(BaseModel):
 
 @app.post("/pedido")
 def crear_pedido(pedido: Pedido):
-    if os.path.exists("pedidos.json"):
-        with open("pedidos.json", "r", encoding="utf-8") as f:
+    if os.path.exists(ARCHIVO_PEDIDOS):
+        with open(ARCHIVO_PEDIDOS, "r", encoding="utf-8") as f:
             try:
                 listado_pedidos = json.load(f)
             except json.JSONDecodeError:
@@ -41,15 +45,16 @@ def crear_pedido(pedido: Pedido):
 
     listado_pedidos.append(datos)
 
-    with open("pedidos.json", "w", encoding="utf-8") as f:
+    with open(ARCHIVO_PEDIDOS, "w", encoding="utf-8") as f:
         json.dump(listado_pedidos, f, indent=4)
 
     return {"mensaje": "Pedido recibido con éxito", "datos": datos}
 
+
 @app.get("/pedidos")
 def listar_pedidos():
-    if os.path.exists("pedidos.json"):
-        with open("pedidos.json", "r", encoding="utf-8") as f:
+    if os.path.exists(ARCHIVO_PEDIDOS):
+        with open(ARCHIVO_PEDIDOS, "r", encoding="utf-8") as f:
             try:
                 listado_pedidos = json.load(f)
             except json.JSONDecodeError:

@@ -319,6 +319,88 @@ input[readonly] {
     to { opacity: 1; transform: translateY(0); }
 }
 
+/* SECCIÓN COCINA / COMANDAS */
+.seccion-cocina {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 2px dashed var(--color-borde);
+}
+
+.grid-comandas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.tarjeta-comanda {
+    background-color: #161822;
+    border: 2px solid #282a36;
+    border-left: 6px solid var(--color-amarillo-mostaza);
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+}
+
+.tarjeta-comanda:hover {
+    transform: translateY(-3px);
+    border-left-color: var(--color-rojo-neon);
+}
+
+.tarjeta-comanda .comanda-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #282a36;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+}
+
+.tarjeta-comanda .comanda-cliente {
+    font-weight: 800;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.tarjeta-comanda .comanda-badge {
+    background-color: rgba(255, 209, 102, 0.2);
+    color: var(--color-amarillo-mostaza);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+    text-transform: uppercase;
+}
+
+.tarjeta-comanda .comanda-producto {
+    font-size: 1rem;
+    color: var(--color-texto-gris);
+    margin-bottom: 8px;
+}
+
+.tarjeta-comanda .comanda-detalle {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #a0a0b0;
+    margin-top: 10px;
+}
+
+.tarjeta-comanda .comanda-total {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--color-exito);
+}
+
+.sin-comandas {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--color-texto-gris);
+    padding: 30px;
+    font-style: italic;
+}
+
 @media (max-width: 600px) {
     .header h1 { font-size: 2rem; }
     .fila-doble { grid-template-columns: 1fr; }

@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Recalcular en vivo cada vez que el usuario suba o baje la cantidad
     document.getElementById("cantidad").addEventListener("input", calcularTotal);
+    cargarPedidosCocina();
 });
 
 function seleccionarProducto(nombre, precio){
@@ -22,6 +23,39 @@ function calcularTotal(){
     document.getElementById("total-cuenta").textContent = `Total: $${total.toLocaleString()}`;
     return total;
 }
+
+async function cargarPedidosCocina() {
+    try {
+        const respuesta = await fetch(`${API_URL}/pedidos`);
+        const data = await respuesta.json();
+        const contenedor = document.getElementById("lista-comandas");
+        contenedor.innerHTML = ""; // Limpiar antes de agregar
+
+        if (data.pedidos.length === 0) {
+            contenedor.innerHTML = `<p class="sin-comandas">No hay pedidos pendientes en la cocina 😴</p>`;
+            return;
+        }
+        data.pedidos.forEach((pedido, index) => {
+            const tarjeta = document.createElement("div");
+            tarjeta.className = "tarjeta-comanda";
+            tarjeta.innerHTML = `
+                <div class="comanda-header">
+                    <span class="comanda-cliente">👤 ${pedido.cliente}</span>
+                    <span class="comanda-badge">Mesa #${index + 1}</span>
+                </div>
+                <div class="comanda-producto">🍔 <strong>${pedido.producto}</strong></div>
+                <div class="comanda-detalle">
+                    <span>Cant: ${pedido.cantidad} x $${pedido.precio.toLocaleString()}</span>
+                    <span class="comanda-total">$${pedido.total.toLocaleString()}</span>
+                </div>
+            `;
+            contenedor.appendChild(tarjeta);
+        });
+    } catch (error) {
+        console.error("Error cargando pedidos:", error);
+    }
+}
+
 
 document.getElementById("form-pedido").addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -49,6 +83,7 @@ document.getElementById("form-pedido").addEventListener("submit", async (e) => {
         if (respuesta.ok) {
             alert(`✅ ¡Pedido marchado a la cocina con éxito! Total: $${total.toLocaleString()}`);
             carrito.push(data);
+            cargarPedidosCocina();
             localStorage.setItem("chuzo_carrito", JSON.stringify(carrito));
             document.getElementById("form-pedido").reset();
             document.getElementById("total-cuenta").textContent = "Total: $0";
@@ -60,3 +95,5 @@ document.getElementById("form-pedido").addEventListener("submit", async (e) => {
         alert("❌ No se pudo conectar con el servidor.");
     }
 });
+
+
